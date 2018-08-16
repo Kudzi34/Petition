@@ -1,0 +1,38 @@
+* {
+    background-color: grey;
+}
+
+#lastname {
+    height: 25px;
+    background: white;
+    margin-left: 10px;
+}
+#firstname {
+    height: 25px;
+    background: white;
+}
+
+#image1 {
+    border: solid black;
+    height: 400px;
+    width: 100%;
+}
+header {
+    texposition: relative;
+    text-align: center;
+    font-family: cursive;
+    font-weight: bold;
+    font-size: 30px;
+    color: white;
+}
+canvas {
+    border: dotted black 1px;
+    position: relative;
+    align-content: center;
+    background-color: white;
+}
+#Sbutton {
+    height: 40px;
+    width: 75px;
+    box-shadow: black 2px 2px;
+}
