@@ -5,8 +5,14 @@
 
 <ul class="listOfPeople">
     {{#each signers}}
+    {{#if homepage}}
 
-        <li>{{firstname}} {{lastname}}</li>
+        <li> <a href="{{homepage}}">{{firstname}} {{lastname}}<a/>,{{age}},<a href="/signers/{{city}}">{{city}}</a></li>
+        {{else}}
+
+        <li>{{firstname}} {{lastname}},  {{age}},  <a href="/signers/{{city}}">{{city}}</a></li>
+
+        {{/if}}
     {{/each}}
 
 </ul>

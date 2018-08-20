@@ -17,7 +17,9 @@ exports.getSignatureById = id => {
 };
 
 exports.lookForNames = lookForNames => {
-    return db.query("SELECT firstname,lastname FROM signatures");
+    return db.query(
+        "SELECT users.firstname, users.lastname, user_profiles.age, user_profiles.city, user_profiles.homepage FROM users JOIN user_profiles ON users.id = user_profiles.userId"
+    );
 };
 exports.saveUser = (firstname, lastname, email, hashedpassword) => {
     const q =
@@ -31,4 +33,15 @@ exports.saveUser = (firstname, lastname, email, hashedpassword) => {
 };
 exports.getUsers = function() {
     return db.query("SELECT * FROM users");
+};
+exports.saveProfile = (userId, city, age, homepage) => {
+    const q =
+        "INSERT INTO user_profiles (userId, city, age, homepage) VALUES ($1, $2, $3, $4) RETURNING *;";
+    return db.query(q, [userId, city, age, homepage]);
+};
+
+exports.lookForCity = city => {
+    const q =
+        "SELECT users.firstname, users.lastname, user_profiles.age, user_profiles.city, user_profiles.homepage FROM users JOIN user_profiles ON users.id = user_profiles.userId WHERE city = ($1)";
+    return db.query(q, [city]);
 };

@@ -5,5 +5,5 @@ CREATE TABLE users (
     firstname VARCHAR(255) NOT NULL,
     lastname VARCHAR (255)  NOT NULL,
     email VARCHAR (255) NOT NULL UNIQUE,
-    hashedpassword VARCHAR NOT NULL
+    hashedpassword VARCHAR(255) NOT NULL
 );

@@ -91,7 +91,7 @@ app.post("/register", (req, res) => {
                     lastname,
                     userId: response.rows[0].id
                 };
-                res.redirect("/petition");
+                res.redirect("/profile");
             })
             .catch(function() {
                 console.log("error handling");
@@ -103,6 +103,32 @@ app.post("/register", (req, res) => {
     });
 });
 
+app.get("/profile", (req, res) => {
+    res.render("profile", {
+        layout: "main"
+    });
+});
+
+app.post("/profile", (req, res) => {
+    console.log(req.session.user.userId);
+    db.saveProfile(
+        req.session.user.userId,
+        req.body.city,
+        req.body.age,
+        req.body.homepage
+    )
+        .then(results => {
+            res.redirect("/petition");
+        })
+        .catch(error => {
+            console.log(error);
+            res.render("sign", {
+                layout: "main",
+                error: true
+            });
+        });
+    //    console.log(age, city, homepage);
+});
 app.get("/petition", (req, res) => {
     res.render("sign", {
         layout: "main"
@@ -110,11 +136,35 @@ app.get("/petition", (req, res) => {
 });
 
 app.get("/listOfPeople", (req, res) => {
-    db.lookForNames().then(names => {
+    db.lookForNames()
+        .then(names => {
+            res.render("signers", {
+                layout: "main",
+                signers: names.rows,
+                count: names.rowCount,
+                city: names.city,
+                homepage: names.homepage
+            });
+        })
+        .catch(err => {
+            console.log(err);
+            res.render("sign", {
+                layout: "main",
+                error: true
+            });
+        });
+});
+app.get("/signers/:city", (req, res) => {
+    // console.log("HERE HEre:  ", req.params.city);
+    var nameOftheCity = req.params.city;
+    db.lookForCity(nameOftheCity).then(names => {
         res.render("signers", {
             layout: "main",
             signers: names.rows,
-            count: names.rowCount
+            count: names.rowCount,
+            age: names.age,
+            city: names.city,
+            homepage: names.homepage
         });
     });
 });
