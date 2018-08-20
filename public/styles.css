@@ -2,22 +2,44 @@
     background-color: grey;
 }
 
-#lastname {
+.input {
+    margin-bottom: 10px;
+    display: block;
     height: 25px;
     background: white;
     margin-left: 10px;
 }
-#firstname {
-    height: 25px;
-    background: white;
+.maindiv {
+    display: flex;
+    justify-content: center;
+}
+
+.sigdiv {
+    background-color: white;
+    width: 200px;
+    height: 100px;
 }
 
 #image1 {
+    margin-left: auto;
+    margin-right: auto;
     border: solid black;
     height: 400px;
     width: 100%;
 }
-header {
+#image4 {
+    margin-left: auto;
+    margin-right: auto;
+    height: 400px;
+    width: 100%;
+    height: 70%;
+}
+#Lbutton {
+    margin-bottom: 10px;
+    position: relative;
+    left: 60px;
+}
+h1 {
     texposition: relative;
     text-align: center;
     font-family: cursive;
@@ -25,14 +47,48 @@ header {
     font-size: 30px;
     color: white;
 }
-canvas {
+#canvas {
     border: dotted black 1px;
     position: relative;
     align-content: center;
     background-color: white;
 }
-#Sbutton {
+.button {
+    border-radius: 5px;
     height: 40px;
     width: 75px;
     box-shadow: black 2px 2px;
+}
+
+#regimage {
+    margin-top: 10px;
+    margin-bottom: 20px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    height: 400px;
+    position: relative;
+}
+#Rbutton {
+    position: relative;
+    left: 60px;
+}
+#Sbutton {
+    position: relative;
+    left: 10px;
+    bottom: 55px;
+}
+.register {
+    display: flex;
+    justify-content: center;
+}
+#thanksimage {
+    margin-left: auto;
+    margin-right: auto;
+    height: 500px;
+    position: relative;
+}
+.formelements {
+    display: block;
+    position: relative;
 }

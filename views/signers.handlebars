@@ -1,0 +1,13 @@
+<!DOCTYPE HTML>
+
+<div class="boxOfPeople">
+    <h2 style="margin-top: 50px;"> There are {{count}}who have signed this petiton: </h2>
+
+<ul class="listOfPeople">
+    {{#each signers}}
+
+        <li>{{firstname}} {{lastname}}</li>
+    {{/each}}
+
+</ul>
+</div>
