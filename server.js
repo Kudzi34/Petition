@@ -5,6 +5,7 @@ const bp = require("body-parser");
 const db = require("./SQL/db.js");
 const cookieSession = require("cookie-session");
 const bcrypt = require("./bcrypt");
+//const { hashPass, checkPass } = require("./public/hashing");
 // POSTGRES
 // HANDLEBARS //
 app.use(
@@ -28,7 +29,6 @@ app.use(
 
 function checkForSigId(req, res, next) {
     if (!req.session.signature) {
-        console.log("redirection");
         res.redirect("/petition");
     } else {
         next();
@@ -44,15 +44,12 @@ app.post("/login", (req, res) => {
     let { email, password } = req.body;
     db.getUsers()
         .then(response => {
-            console.log(response);
             response.rows.forEach(row => {
                 if (email == row.email) {
-                    console.log("checking password", row.email);
                     bcrypt
                         .checkPass(password, row.hashedpassword)
                         .then(doesMatch => {
                             if (doesMatch) {
-                                console.log("right password");
                                 req.session.user = {
                                     firstname: row.firstname,
                                     lastname: row.lastname,
@@ -65,7 +62,6 @@ app.post("/login", (req, res) => {
             });
         })
         .catch(error => {
-            console.log(error);
             res.render("login", {
                 layout: "main"
             });
@@ -88,7 +84,8 @@ app.post("/register", (req, res) => {
                 };
                 res.redirect("/profile");
             })
-            .catch(function() {
+            .catch(function(error) {
+                console.log("error", error);
                 res.render("register", {
                     layout: "main",
                     error: true
@@ -114,7 +111,7 @@ app.post("/profile", (req, res) => {
             res.redirect("/petition");
         })
         .catch(error => {
-            console.log(error);
+            console.log("error on profile post", error);
             res.render("sign", {
                 layout: "main",
                 error: true
@@ -179,7 +176,7 @@ app.post("/petition", (req, res) => {
             res.redirect("/thanks");
         })
         .catch(err => {
-            console.log(err);
+            console.log("error here");
             res.render("sign", {
                 layout: "main",
                 error: true
@@ -189,7 +186,6 @@ app.post("/petition", (req, res) => {
 
 app.get("/editprofile", (req, res) => {
     var userId = req.session.user.userId;
-    //console.log(" user ID  ", userId);
     db.editProfile(userId)
         .then(result => {
             res.render("profile_edit", {
@@ -202,6 +198,58 @@ app.get("/editprofile", (req, res) => {
                 city: result.rows[0].city,
                 homepage: result.rows[0].homepage
             });
+        })
+        .catch(err => {
+            res.render("profile_edit", {
+                layout: "main",
+                error: true
+            });
+        });
+});
+
+app.post("/editprofile", (req, res) => {
+    if (req.body.password != "") {
+        bcrypt.hashPass(req.body.password).then(hashed => {
+            db.updateUserTable(
+                req.session.user.userId,
+                req.body.firstname,
+                req.body.lastname,
+                req.body.email,
+                hashed
+            ).catch(err => {
+                console.log("This error is in the editprofile", err);
+                res.render("profile_edit", {
+                    layout: "main",
+                    error: true
+                });
+            });
+        });
+    } else {
+        //        console.log("Test 1111");
+        db.updateUserTableWithoutPassword(
+            req.session.user.userId,
+            req.body.firstname,
+            req.body.lastname,
+            req.body.email
+        ).catch(err => {
+            console.log(
+                "this error occured in updateUserTableWithoutPassword",
+                err
+            );
+            res.render("profile_edit", {
+                layout: "main",
+                error: true
+            });
+        });
+    }
+    db.updateProfileTable(
+        req.body.age,
+        req.body.city,
+        req.body.homepage,
+        req.session.user.userId
+    )
+        .then(result => {
+            res.redirect("/petition");
         })
         .catch(err => {
             console.log(err);
