@@ -1,14 +1,10 @@
 const spicedPg = require("spiced-pg");
 const db = spicedPg("postgres:postgres:postgres@localhost:5432/PackardBell");
 
-exports.saveSignature = (firstname, lastname, signature) => {
+exports.saveSignature = (user_id, signature) => {
     const q =
-        "INSERT INTO signatures (firstname, lastname, signature) VALUES ($1, $2, $3) RETURNING *;";
-    return db.query(q, [
-        firstname || null,
-        lastname || null,
-        signature || null
-    ]);
+        "INSERT INTO signatures ( user_id, signature) VALUES ($1, $2) RETURNING *;";
+    return db.query(q, [user_id, signature || null]);
 };
 
 exports.getSignatureById = id => {
@@ -44,4 +40,14 @@ exports.lookForCity = city => {
     const q =
         "SELECT users.firstname, users.lastname, user_profiles.age, user_profiles.city, user_profiles.homepage FROM users JOIN user_profiles ON users.id = user_profiles.userId WHERE city = ($1)";
     return db.query(q, [city]);
+};
+exports.editProfile = user_id => {
+    const q = `
+        SELECT users.firstname, users.lastname, users.email, user_profiles.age, user_profiles.city, user_profiles.homepage
+        FROM users
+        JOIN user_profiles
+        ON users.id = user_profiles.userid
+        WHERE users.id = ($1);
+        `;
+    return db.query(q, [user_id]);
 };

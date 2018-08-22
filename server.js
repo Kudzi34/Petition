@@ -27,8 +27,6 @@ app.use(
 );
 
 function checkForSigId(req, res, next) {
-    //    console.log("inside checkForSigId", req.session);
-
     if (!req.session.signature) {
         console.log("redirection");
         res.redirect("/petition");
@@ -44,15 +42,12 @@ app.get("/login", (req, res) => {
 
 app.post("/login", (req, res) => {
     let { email, password } = req.body;
-    //console.log(email, password);
     db.getUsers()
         .then(response => {
             console.log(response);
-            //        let match = 0;
             response.rows.forEach(row => {
                 if (email == row.email) {
                     console.log("checking password", row.email);
-                    //            match = 1;
                     bcrypt
                         .checkPass(password, row.hashedpassword)
                         .then(doesMatch => {
@@ -94,7 +89,6 @@ app.post("/register", (req, res) => {
                 res.redirect("/profile");
             })
             .catch(function() {
-                console.log("error handling");
                 res.render("register", {
                     layout: "main",
                     error: true
@@ -110,7 +104,6 @@ app.get("/profile", (req, res) => {
 });
 
 app.post("/profile", (req, res) => {
-    console.log(req.session.user.userId);
     db.saveProfile(
         req.session.user.userId,
         req.body.city,
@@ -127,7 +120,6 @@ app.post("/profile", (req, res) => {
                 error: true
             });
         });
-    //    console.log(age, city, homepage);
 });
 app.get("/petition", (req, res) => {
     res.render("sign", {
@@ -180,15 +172,11 @@ app.get("/thanks", checkForSigId, (req, res) => {
 });
 
 app.post("/petition", (req, res) => {
-    db.saveSignature(req.body.firstname, req.body.lastname, req.body.signature)
+    db.saveSignature(req.session.user.userId, req.body.signature)
         .then(results => {
-            req.session = {
-                signature: results.rows[0].id
-            };
-            req.session.signature;
-            //    console.log("session: ", req.session);
+            req.session.signature = results.rows[0].id;
+
             res.redirect("/thanks");
-            //console.log("working fine");
         })
         .catch(err => {
             console.log(err);
@@ -199,4 +187,28 @@ app.post("/petition", (req, res) => {
         });
 });
 
+app.get("/editprofile", (req, res) => {
+    var userId = req.session.user.userId;
+    //console.log(" user ID  ", userId);
+    db.editProfile(userId)
+        .then(result => {
+            res.render("profile_edit", {
+                layout: "main",
+                firstname: result.rows[0].firstname,
+                lastname: result.rows[0].lastname,
+                email: result.rows[0].email,
+                // password: result.rows[0].password,
+                age: result.rows[0].age,
+                city: result.rows[0].city,
+                homepage: result.rows[0].homepage
+            });
+        })
+        .catch(err => {
+            console.log(err);
+            res.render("profile_edit", {
+                layout: "main",
+                error: true
+            });
+        });
+});
 app.listen(8080, () => "welcome to the petition");
