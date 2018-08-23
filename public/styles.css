@@ -15,9 +15,21 @@
 }
 
 .sigdiv {
+    border: solid;
     background-color: white;
     width: 200px;
     height: 100px;
+}
+.listOfPeople {
+    font-size: 20px;
+    color: white;
+    font-style: cursive;
+}
+.profdiv1 {
+}
+#image5 {
+    margin-left: auto;
+    margin-right: auto;
 }
 
 #image1 {
@@ -87,6 +99,13 @@ h1 {
     margin-right: auto;
     height: 500px;
     position: relative;
+}
+#thanks-text {
+    font-size: 20px;
+    font-weight: bold;
+    font-family: cursive;
+    color: white;
+    text-decoration: white;
 }
 .formelements {
     display: block;
