@@ -14,7 +14,7 @@ exports.getSignatureById = id => {
 
 exports.lookForNames = lookForNames => {
     return db.query(
-        "SELECT users.firstname, users.lastname, user_profiles.age, user_profiles.city, user_profiles.homepage FROM users JOIN user_profiles ON users.id = user_profiles.userId"
+        "SELECT users.firstname, users.lastname, user_profiles.age, user_profiles.city, user_profiles.homepage FROM users JOIN user_profiles ON users.id = user_profiles.user_id"
     );
 };
 exports.saveUser = (firstname, lastname, email, hashedpassword) => {
@@ -30,15 +30,15 @@ exports.saveUser = (firstname, lastname, email, hashedpassword) => {
 exports.getUsers = function() {
     return db.query("SELECT * FROM users");
 };
-exports.saveProfile = (userId, city, age, homepage) => {
+exports.saveProfile = (user_id, city, age, homepage) => {
     const q =
         "INSERT INTO user_profiles (user_id, city, age, homepage) VALUES ($1, $2, $3, $4) RETURNING *;";
-    return db.query(q, [userId, city, age, homepage]);
+    return db.query(q, [user_id, city, age, homepage]);
 };
 
 exports.lookForCity = city => {
     const q =
-        "SELECT users.firstname, users.lastname, user_profiles.age, user_profiles.city, user_profiles.homepage FROM users JOIN user_profiles ON users.id = user_profiles.userId WHERE city = ($1)";
+        "SELECT users.firstname, users.lastname, user_profiles.age, user_profiles.city, user_profiles.homepage FROM users JOIN user_profiles ON users.id = user_profiles.user_id WHERE city = ($1)";
     return db.query(q, [city]);
 };
 exports.editProfile = user_id => {
@@ -46,49 +46,36 @@ exports.editProfile = user_id => {
         SELECT users.firstname, users.lastname, users.email, user_profiles.age, user_profiles.city, user_profiles.homepage
         FROM users
         JOIN user_profiles
-        ON users.id = user_profiles.userid
+        ON users.id = user_profiles.user_id
         WHERE users.id = ($1);
         `;
     return db.query(q, [user_id]);
 };
 
-exports.updateUserTableWithoutPassword = (
-    user_id,
-    firstname,
-    lastname,
-    email
-) => {
+exports.updateUserTableWithoutPassword = (id, firstname, lastname, email) => {
     const q = `
      UPDATE users
     SET firstname = $2, lastname = $3, email = $4
     WHERE id = $1
     `;
-    return db.query(q, [user_id, firstname, lastname, email]);
+    return db.query(q, [id, firstname, lastname, email]);
 };
 
-exports.updateUserTable = (
-    user_id,
-    firstname,
-    lastname,
-    email,
-    hashedpassword
-) => {
-    console.log("with Password is here");
+exports.updateUserTable = (id, firstname, lastname, email, hashedpassword) => {
     const q = `
-    INSERT INTO users (id, firstname, lastname, email, hashedpassword)
-    VALUES ($1, $2, $3, $4, $5)
-    ON CONFLICT (id)
-    DO UPDATE SET firstname = ($2), lastname = ($3), email = ($4), hashedpassword = ($5)
+    UPDATE users SET firstname = $2, lastname = $3, email = $4, hashedpassword = $5
+    WHERE id = $1
     `;
-    return db.query(q, [user_id, firstname, lastname, email, hashedpassword]);
+    return db.query(q, [id, firstname, lastname, email, hashedpassword]);
 };
 
-exports.updateProfileTable = (age, city, homepage, userid) => {
+exports.updateProfileTable = (age, city, homepage, user_id) => {
+    console.log(age, city, homepage, user_id);
     const q = `
-    INSERT INTO user_profiles (age, city, homepage, userid)
+    INSERT INTO user_profiles (age, city, homepage, user_id)
     VALUES ($1, $2, $3, $4)
-    ON CONFLICT (userid)
+    ON CONFLICT (user_id)
     DO UPDATE SET age = $1, city = $2, homepage = $3
     `;
-    return db.query(q, [age, city, homepage, userid]);
+    return db.query(q, [age, city, homepage, user_id]);
 };

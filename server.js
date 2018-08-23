@@ -111,7 +111,6 @@ app.post("/profile", (req, res) => {
             res.redirect("/petition");
         })
         .catch(error => {
-            console.log("error on profile post", error);
             res.render("sign", {
                 layout: "main",
                 error: true
@@ -144,7 +143,6 @@ app.get("/listOfPeople", (req, res) => {
         });
 });
 app.get("/signers/:city", (req, res) => {
-    // console.log("HERE HEre:  ", req.params.city);
     var nameOftheCity = req.params.city;
     db.lookForCity(nameOftheCity).then(names => {
         res.render("signers", {
@@ -176,7 +174,6 @@ app.post("/petition", (req, res) => {
             res.redirect("/thanks");
         })
         .catch(err => {
-            console.log("error here");
             res.render("sign", {
                 layout: "main",
                 error: true
@@ -193,7 +190,6 @@ app.get("/editprofile", (req, res) => {
                 firstname: result.rows[0].firstname,
                 lastname: result.rows[0].lastname,
                 email: result.rows[0].email,
-                // password: result.rows[0].password,
                 age: result.rows[0].age,
                 city: result.rows[0].city,
                 homepage: result.rows[0].homepage
@@ -217,7 +213,6 @@ app.post("/editprofile", (req, res) => {
                 req.body.email,
                 hashed
             ).catch(err => {
-                console.log("This error is in the editprofile", err);
                 res.render("profile_edit", {
                     layout: "main",
                     error: true
@@ -252,7 +247,6 @@ app.post("/editprofile", (req, res) => {
             res.redirect("/petition");
         })
         .catch(err => {
-            console.log(err);
             res.render("profile_edit", {
                 layout: "main",
                 error: true
