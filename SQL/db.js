@@ -14,7 +14,10 @@ exports.getSignatureById = id => {
 
 exports.lookForNames = lookForNames => {
     return db.query(
-        "SELECT users.firstname, users.lastname, user_profiles.age, user_profiles.city, user_profiles.homepage FROM users JOIN user_profiles ON users.id = user_profiles.user_id"
+        `SELECT users.firstname, users.lastname, user_profiles.age, user_profiles.city, user_profiles.homepage
+         FROM users
+         JOIN user_profiles
+         ON users.id = user_profiles.user_id`
     );
 };
 exports.saveUser = (firstname, lastname, email, hashedpassword) => {
@@ -31,14 +34,18 @@ exports.getUsers = function() {
     return db.query("SELECT * FROM users");
 };
 exports.saveProfile = (user_id, city, age, homepage) => {
-    const q =
-        "INSERT INTO user_profiles (user_id, city, age, homepage) VALUES ($1, $2, $3, $4) RETURNING *;";
+    const q = `
+         INSERT INTO user_profiles (user_id, city, age, homepage)
+         VALUES ($1, $2, $3, $4) RETURNING *;`;
     return db.query(q, [user_id, city, age, homepage]);
 };
 
 exports.lookForCity = city => {
-    const q =
-        "SELECT users.firstname, users.lastname, user_profiles.age, user_profiles.city, user_profiles.homepage FROM users JOIN user_profiles ON users.id = user_profiles.user_id WHERE city = ($1)";
+    const q = `
+         SELECT users.firstname, users.lastname, user_profiles.age, user_profiles.city, user_profiles.homepage
+         FROM users JOIN user_profiles
+         ON users.id = user_profiles.user_id
+         WHERE city = ($1)`;
     return db.query(q, [city]);
 };
 exports.editProfile = user_id => {
@@ -55,8 +62,8 @@ exports.editProfile = user_id => {
 exports.updateUserTableWithoutPassword = (id, firstname, lastname, email) => {
     const q = `
      UPDATE users
-    SET firstname = $2, lastname = $3, email = $4
-    WHERE id = $1
+     SET firstname = $2, lastname = $3, email = $4
+     WHERE id = $1
     `;
     return db.query(q, [id, firstname, lastname, email]);
 };
@@ -78,4 +85,12 @@ exports.updateProfileTable = (age, city, homepage, user_id) => {
     DO UPDATE SET age = $1, city = $2, homepage = $3
     `;
     return db.query(q, [age, city, homepage, user_id]);
+};
+
+exports.deleteSignature = user_id => {
+    const q = `
+    DELETE FROM signatures
+    WHERE user_id = $1
+    `;
+    return db.query(q, [user_id]);
 };

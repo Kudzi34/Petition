@@ -55,7 +55,7 @@ app.post("/login", (req, res) => {
                                     lastname: row.lastname,
                                     userId: row.id
                                 };
-                                res.redirect("/petition");
+                                res.redirect("/thanks");
                             }
                         });
                 }
@@ -67,7 +67,7 @@ app.post("/login", (req, res) => {
             });
         });
 });
-app.get("/register", (req, res) => {
+app.get("/register", checkIfLogged, (req, res) => {
     res.render("register", {
         layout: "main"
     });
@@ -94,7 +94,15 @@ app.post("/register", (req, res) => {
     });
 });
 
-app.get("/profile", (req, res) => {
+function checkIfLogged(req, res, next) {
+    if (!req.session.user) {
+        res.redirect("/login");
+    } else {
+        next();
+    }
+}
+
+app.get("/profile", checkIfLogged, (req, res) => {
     res.render("profile", {
         layout: "main"
     });
@@ -117,13 +125,17 @@ app.post("/profile", (req, res) => {
             });
         });
 });
-app.get("/petition", (req, res) => {
-    res.render("sign", {
-        layout: "main"
-    });
+app.get("/petition", checkIfLogged, (req, res) => {
+    if (req.session.user.signature) {
+        res.redirect("/thanks");
+    } else {
+        res.render("sign", {
+            layout: "main"
+        });
+    }
 });
 
-app.get("/listOfPeople", (req, res) => {
+app.get("/listOfPeople", checkIfLogged, (req, res) => {
     db.lookForNames()
         .then(names => {
             res.render("signers", {
@@ -164,6 +176,25 @@ app.get("/thanks", checkForSigId, (req, res) => {
             signature: results.rows[0].signature
         });
     });
+});
+
+app.get("/logout", function(req, res) {
+    req.session = null;
+    res.redirect("/login");
+});
+app.post("/thanks", function(req, res) {
+    db.deleteSignature(req.session.user.userId)
+        .then(results => {
+            delete req.session.user.signature;
+            res.redirect("/signers");
+        })
+        .catch(err => {
+            console.log("Error is in deleteSignature", err);
+            res.render("thanks", {
+                layout: "main",
+                error: true
+            });
+        });
 });
 
 app.post("/petition", (req, res) => {
