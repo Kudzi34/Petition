@@ -6,7 +6,7 @@
     margin-bottom: 10px;
     display: block;
     height: 25px;
-    background: white;
+    background: blue;
     margin-left: 10px;
 }
 .maindiv {
@@ -20,24 +20,38 @@
     width: 200px;
     height: 100px;
 }
+.Editdiv {
+    display: flex;
+    justify-content: center;
+}
+.editimages {
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+}
 .listOfPeople {
     font-size: 20px;
     color: white;
     font-style: cursive;
 }
 .profdiv1 {
+    display: flex;
+    justify-content: center;
+}
+.profdiv {
+    display: flex;
+    justify-content: center;
 }
 #image5 {
-    margin-left: auto;
-    margin-right: auto;
+    margin-bottom: 20px;
 }
 
 #image1 {
-    margin-left: auto;
-    margin-right: auto;
-    border: solid black;
-    height: 400px;
-    width: 100%;
+    box-shadow: 8px 8px black;
+    margin-bottom: 20px;
+    width: 70%;
+    border: solid white 3px;
+    height: 450px;
 }
 #image4 {
     margin-left: auto;
@@ -52,6 +66,7 @@
     left: 60px;
 }
 h1 {
+    text-shadow: 4px 4px black;
     texposition: relative;
     text-align: center;
     font-family: cursive;
@@ -60,7 +75,7 @@ h1 {
     color: white;
 }
 #canvas {
-    border: dotted black 1px;
+    border: solid black 2px;
     position: relative;
     align-content: center;
     background-color: white;
@@ -68,8 +83,13 @@ h1 {
 .button {
     border-radius: 5px;
     height: 40px;
-    width: 75px;
+    width: 85px;
     box-shadow: black 2px 2px;
+}
+#cbutton {
+    position: relative;
+    left: 50px;
+    margin-top: 10px;
 }
 
 #regimage {
@@ -81,6 +101,9 @@ h1 {
     height: 400px;
     position: relative;
 }
+#image9 {
+    height: 250px;
+}
 #Rbutton {
     position: relative;
     left: 60px;
@@ -89,6 +112,19 @@ h1 {
     position: relative;
     left: 10px;
     bottom: 55px;
+}
+#updatebutton {
+    position: relative;
+    left: 50px;
+}
+#signersh2 {
+    font-size: 20px;
+    font-family: cursive;
+    font-weight: bold;
+    color: white;
+    text-shadow: 4px 4px black;
+}
+.listOfPeople {
 }
 .register {
     display: flex;
@@ -107,7 +143,19 @@ h1 {
     color: white;
     text-decoration: white;
 }
+#signtext {
+    text-shadow: 2px 2px black;
+    font-size: 20px;
+    font-family: cursive;
+    font-weight: bold;
+    color: white;
+}
 .formelements {
     display: block;
     position: relative;
+}
+
+.topdiv {
+    display: flex;
+    justify-content: center;
 }
