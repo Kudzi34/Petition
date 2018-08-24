@@ -1,6 +1,5 @@
 const express = require("express");
 const app = express();
-const fs = require("fs");
 const bp = require("body-parser");
 const db = require("./SQL/db.js");
 const cookieSession = require("cookie-session");
@@ -41,6 +40,10 @@ function checkForSigId(req, res, next) {
         next();
     }
 }
+
+app.get("/", (req, res) => {
+    res.redirect("/register");
+});
 app.get("/login", (req, res) => {
     res.render("login", {
         layout: "main"
@@ -291,6 +294,8 @@ app.post("/editprofile", (req, res) => {
             });
         });
 });
-app.listen(process.env.PORT || 8080, () => "welcome to the petition");
+app.listen(process.env.PORT || 8080, () =>
+    console.log("welcome to the petition")
+);
 
 //psql d1htq112vfhpsr tbynqbwgxzzmra -W -h ec2-107-22-221-60.compute-1.amazonaws.com
