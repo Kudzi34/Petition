@@ -1,5 +1,9 @@
 const spicedPg = require("spiced-pg");
-const db = spicedPg("postgres:postgres:postgres@localhost:5432/PackardBell");
+var dbUrl =
+    process.env.DATABASE_URL ||
+    "postgres:postgres:postgres@localhost:5432/PackardBell";
+
+const db = spicedPg(dbUrl);
 
 exports.saveSignature = (user_id, signature) => {
     const q =

@@ -292,3 +292,5 @@ app.post("/editprofile", (req, res) => {
         });
 });
 app.listen(process.env.PORT || 8080, () => "welcome to the petition");
+
+//psql d1htq112vfhpsr tbynqbwgxzzmra -W -h ec2-107-22-221-60.compute-1.amazonaws.com
