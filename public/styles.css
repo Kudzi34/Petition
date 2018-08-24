@@ -6,19 +6,25 @@
     margin-bottom: 10px;
     display: block;
     height: 25px;
-    background: blue;
+    background: #0040ff;
     margin-left: 10px;
+}
+.thanksdiv1 {
+    display: flex;
+    justify-content: center;
 }
 .maindiv {
     display: flex;
     justify-content: center;
 }
-
+#signature {
+    border: solid 2px;
+}
 .sigdiv {
-    border: solid;
-    background-color: white;
-    width: 200px;
-    height: 100px;
+    display: flex;
+    justify-content: center;
+    width: auto;
+    height: 200px;
 }
 .Editdiv {
     display: flex;
@@ -41,6 +47,9 @@
 .profdiv {
     display: flex;
     justify-content: center;
+}
+.thanksdiv3 {
+    display: inline-block;
 }
 #image5 {
     margin-bottom: 20px;
@@ -141,7 +150,8 @@ h1 {
     font-weight: bold;
     font-family: cursive;
     color: white;
-    text-decoration: white;
+    text-shadow: 4px 4px black;
+    text-decoration: none;
 }
 #signtext {
     text-shadow: 2px 2px black;
