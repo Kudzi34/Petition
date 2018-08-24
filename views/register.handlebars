@@ -12,6 +12,7 @@
      <input  class="input"type="text" name="email" placeholder="email">
      <input class="input"type="text" name="password" placeholder="password">
      <button id="Rbutton"class="button"type="submit" name="register">SUBMIT</button>
+      <input name="_csrf" value="{{csrfToken}}" type="hidden"> <!-- security feature -->
   </form>
   {{#if error}} <p>There was an error</p>{{/if}}
 

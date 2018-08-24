@@ -5,6 +5,7 @@ const bp = require("body-parser");
 const db = require("./SQL/db.js");
 const cookieSession = require("cookie-session");
 const bcrypt = require("./bcrypt");
+const csurf = require("csurf");
 //const { hashPass, checkPass } = require("./public/hashing");
 // POSTGRES
 // HANDLEBARS //
@@ -15,6 +16,12 @@ app.use(
     })
 );
 
+app.use(csurf()); /// have to be after cookie session
+
+app.use((req, res, next) => {
+    res.locals.csrfToken = req.csrfToken(); // locals is an empty object
+    next();
+});
 const hb = require("express-handlebars");
 app.engine("handlebars", hb());
 app.set("view engine", "handlebars");
@@ -284,4 +291,4 @@ app.post("/editprofile", (req, res) => {
             });
         });
 });
-app.listen(8080, () => "welcome to the petition");
+app.listen(process.env.PORT || 8080, () => "welcome to the petition");

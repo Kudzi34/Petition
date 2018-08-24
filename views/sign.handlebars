@@ -10,6 +10,7 @@
       <p id="signtext">PLEASE SIGN HERE</p>
       <canvas id="canvas"name="canvas" width="200" height="100"></canvas>
       <button id="Sbutton"class="button"type="submit" name="button">SUBMIT</button>
+      <input name="_csrf" value="{{csrfToken}}" type="hidden"> <!-- security feature -->
 
     {{#if error}} There was an error{{/if}}
 
