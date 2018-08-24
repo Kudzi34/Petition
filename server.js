@@ -5,9 +5,19 @@ const db = require("./SQL/db.js");
 const cookieSession = require("cookie-session");
 const bcrypt = require("./bcrypt");
 const csurf = require("csurf");
-//const { hashPass, checkPass } = require("./public/hashing");
-// POSTGRES
-// HANDLEBARS //
+
+const hb = require("express-handlebars");
+app.engine("handlebars", hb());
+app.set("view engine", "handlebars");
+
+app.use(express.static("./public"));
+
+app.use(
+    bp.urlencoded({
+        extended: false
+    })
+);
+app.use(require("cookie-parser")());
 app.use(
     cookieSession({
         secret: `Döner Kebab`,
@@ -21,17 +31,6 @@ app.use((req, res, next) => {
     res.locals.csrfToken = req.csrfToken(); // locals is an empty object
     next();
 });
-const hb = require("express-handlebars");
-app.engine("handlebars", hb());
-app.set("view engine", "handlebars");
-
-app.use(express.static("./public"));
-
-app.use(
-    bp.urlencoded({
-        extended: false
-    })
-);
 
 function checkForSigId(req, res, next) {
     if (!req.session.signature) {
@@ -77,7 +76,7 @@ app.post("/login", (req, res) => {
             });
         });
 });
-app.get("/register", checkIfLogged, (req, res) => {
+app.get("/register", (req, res) => {
     res.render("register", {
         layout: "main"
     });
@@ -106,7 +105,7 @@ app.post("/register", (req, res) => {
 
 function checkIfLogged(req, res, next) {
     if (!req.session.user) {
-        res.redirect("/login");
+        res.redirect("/register");
     } else {
         next();
     }
