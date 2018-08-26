@@ -18,7 +18,8 @@
     justify-content: center;
 }
 #signature {
-    border: solid 2px;
+    width: 400px;
+    border: solid 4px;
 }
 .sigdiv {
     display: flex;
@@ -108,6 +109,7 @@ h1 {
     margin-left: auto;
     margin-right: auto;
     height: 400px;
+
     position: relative;
 }
 #image9 {
@@ -140,9 +142,11 @@ h1 {
     justify-content: center;
 }
 #thanksimage {
+    margin-bottom: 10px;
     margin-left: auto;
     margin-right: auto;
     height: 500px;
+    width: 400px;
     position: relative;
 }
 #thanks-text {
@@ -168,4 +172,21 @@ h1 {
 .topdiv {
     display: flex;
     justify-content: center;
+}
+.regtop {
+    display: inline-flex;
+    margin-bottom: 10px;
+}
+.hungerfactsdiv {
+    margin-left: 75px;
+    text-align: justify;
+    display: inline-block;
+    border: 3px solid white;
+    border-radius: 20px;
+}
+.foodwaistagediv {
+    margin-left: 20px;
+    display: inline-block;
+    border: 3px solid white;
+    border-radius: 20px;
 }
