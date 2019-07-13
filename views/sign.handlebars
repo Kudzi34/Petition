@@ -1,19 +1,21 @@
+<div class="container">
 
-<h1>SIGN PETTION TO SAVE A LIFE BY REDUCING FOOD WAISTAGE!</h1>
-<div class="topdiv">
-    <img id="image1"src="image1.png">
-</div>
+  <h1>SIGN PETTION TO SAVE A LIFE BY REDUCING FOOD WASTAGE!</h1>
+  <div class="col-md-12">
+    <img class="col-md-12"id="image1"src="image1.png">
+  </div>
 
-<div class="maindiv">
-    <form method="post">
+  <div class="text-center">
+    <form action="/sign" method="post">
       <input type="hidden" name="signature" placeholder="signature">
       <p id="signtext">PLEASE SIGN HERE</p>
-      <canvas id="canvas"name="canvas" width="200" height="100"></canvas>
+      <canvas class="col-md-6" id="canvas"name="canvas" width="" height=""></canvas>
       <button id="Sbutton"class="button"type="submit" name="button">SUBMIT</button>
       <input name="_csrf" value="{{csrfToken}}" type="hidden"> <!-- security feature -->
 
-    {{#if error}} There was an error{{/if}}
+      {{#if error}} There was an error{{/if}}
 
     </form>
 
+  </div>
 </div>

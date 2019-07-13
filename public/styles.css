@@ -1,192 +1,198 @@
 * {
-    background-color: grey;
+  background-color: grey;
 }
 
 .input {
-    margin-bottom: 10px;
-    display: block;
-    height: 25px;
-    background: #0040ff;
-    margin-left: 10px;
+  background: #c0c0c0;
+  border-radius: 15px;
+  margin-bottom: 20px;
+  height: 40px;
+  margin-left: 20px;
+}
+input:focus {
+  outline: none;
 }
 .thanksdiv1 {
-    display: flex;
-    justify-content: center;
+  display: flex;
+  justify-content: center;
 }
 .maindiv {
-    display: flex;
-    justify-content: center;
+  display: flex;
+  justify-content: center;
 }
 #signature {
-    width: 400px;
-    border: solid 4px;
+  width: 400px;
+  border: solid 4px;
 }
 .sigdiv {
-    display: flex;
-    justify-content: center;
-    width: auto;
-    height: 200px;
+  display: flex;
+  justify-content: center;
+  width: auto;
+  height: 200px;
 }
 .Editdiv {
-    display: flex;
-    justify-content: center;
+  display: flex;
+  justify-content: center;
 }
 .editimages {
-    margin-bottom: 20px;
-    display: flex;
-    justify-content: center;
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
 }
 .listOfPeople {
-    font-size: 20px;
-    color: white;
-    font-style: cursive;
+  font-size: 20px;
+  color: white;
+  font-style: cursive;
 }
 .profdiv1 {
-    display: flex;
-    justify-content: center;
+  display: flex;
+  justify-content: center;
 }
 .profdiv {
-    display: flex;
-    justify-content: center;
+  display: flex;
+  justify-content: center;
 }
 .thanksdiv3 {
-    display: inline-block;
+  display: inline-block;
 }
 #image5 {
-    margin-bottom: 20px;
+  height: 400px;
+  widthmargin-bottom: 20px;
 }
 
 #image1 {
-    box-shadow: 8px 8px black;
-    margin-bottom: 20px;
-    width: 70%;
-    border: solid white 3px;
-    height: 450px;
+  box-shadow: 8px 8px black;
+  margin-bottom: 20px;
+  width: 100%;
+  border: solid white 3px;
+  height: 450px;
 }
 #image4 {
-    margin-left: auto;
-    margin-right: auto;
-    height: 400px;
-    width: 100%;
-    height: 70%;
+  margin-left: auto;
+  margin-right: auto;
+  height: 400px;
+  width: 100%;
+  height: 70%;
 }
 #Lbutton {
-    margin-bottom: 10px;
-    position: relative;
-    left: 60px;
+  margin-bottom: 10px;
+  position: relative;
+  left: 60px;
 }
 h1 {
-    text-shadow: 4px 4px black;
-    texposition: relative;
-    text-align: center;
-    font-family: cursive;
-    font-weight: bold;
-    font-size: 30px;
-    color: white;
+  text-shadow: 4px 4px black;
+  texposition: relative;
+  text-align: center;
+  font-family: cursive;
+  font-weight: bold;
+  font-size: 30px;
+  color: white;
 }
 #canvas {
-    border: solid black 2px;
-    position: relative;
-    align-content: center;
-    background-color: white;
+  height: 250px;
+  width: 80%;
+  border: solid black 2px;
+  position: relative;
+  align-content: center;
+  background-color: white;
 }
 .button {
-    border-radius: 5px;
-    height: 40px;
-    width: 85px;
-    box-shadow: black 2px 2px;
+  border-radius: 5px;
+  height: 40px;
+  width: 85px;
+  box-shadow: black 2px 2px;
 }
 #cbutton {
-    position: relative;
-    left: 50px;
-    margin-top: 10px;
+  margin-left: 15px;
+  width: 150px;
 }
 
 #regimage {
-    margin-top: 10px;
-    margin-bottom: 20px;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    height: 400px;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  height: 400px;
 
-    position: relative;
+  position: relative;
 }
 #image9 {
-    height: 250px;
+  height: 400px;
 }
 #Rbutton {
-    position: relative;
-    left: 60px;
+  position: relative;
+  left: 60px;
 }
 #Sbutton {
-    position: relative;
-    left: 10px;
-    bottom: 55px;
+  position: relative;
+  left: 10px;
+  bottom: 55px;
 }
 #updatebutton {
-    position: relative;
-    left: 50px;
+  position: relative;
+  left: 50px;
 }
 #signersh2 {
-    font-size: 20px;
-    font-family: cursive;
-    font-weight: bold;
-    color: white;
-    text-shadow: 4px 4px black;
+  font-size: 20px;
+  font-family: cursive;
+  font-weight: bold;
+  color: white;
+  text-shadow: 4px 4px black;
 }
 .listOfPeople {
+  list-style: none;
+}
+.listOfPeople ul li {
+  margin-bottom: 10px;
 }
 .register {
-    display: flex;
-    justify-content: center;
+  display: flex;
+  justify-content: center;
 }
 #thanksimage {
-    margin-bottom: 10px;
-    margin-left: auto;
-    margin-right: auto;
-    height: 500px;
-    width: 400px;
-    position: relative;
+  margin-bottom: 10px;
+  margin-left: auto;
+  margin-right: auto;
+  height: 500px;
+  width: 400px;
+  position: relative;
 }
 #thanks-text {
-    font-size: 20px;
-    font-weight: bold;
-    font-family: cursive;
-    color: white;
-    text-shadow: 4px 4px black;
-    text-decoration: none;
+  font-size: 20px;
+  font-weight: bold;
+  font-family: cursive;
+  color: white;
+  text-shadow: 4px 4px black;
+  text-decoration: none;
 }
 #signtext {
-    text-shadow: 2px 2px black;
-    font-size: 20px;
-    font-family: cursive;
-    font-weight: bold;
-    color: white;
+  text-shadow: 2px 2px black;
+  font-size: 20px;
+  font-family: cursive;
+  font-weight: bold;
+  color: white;
 }
 .formelements {
-    display: block;
-    position: relative;
+  display: block;
+  position: relative;
 }
 
 .topdiv {
-    display: flex;
-    justify-content: center;
+  display: flex;
+  justify-content: center;
 }
-.regtop {
-    display: inline-flex;
-    margin-bottom: 10px;
-}
+
 .hungerfactsdiv {
-    margin-left: 100px;
-    text-align: justify;
-    display: inline-block;
-    border: 3px solid white;
-    border-radius: 20px;
+  margin-left: 100px;
+  text-align: justify;
+  display: inline-block;
+  border: 3px solid white;
+  border-radius: 20px;
 }
 .foodwaistagediv {
-    margin-left: 20px;
-    display: inline-block;
-    border: 3px solid white;
-    border-radius: 20px;
+  margin-left: 20px;
+  display: inline-block;
+  border: 3px solid white;
+  border-radius: 20px;
 }

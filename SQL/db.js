@@ -1,100 +1,101 @@
 const spicedPg = require("spiced-pg");
 var dbUrl =
-    process.env.DATABASE_URL ||
-    "postgres:postgres:postgres@localhost:5432/PackardBell";
+  process.env.DATABASE_URL ||
+  "postgres:postgres:postgres@localhost:5432/kudzainyakunu";
 
 const db = spicedPg(dbUrl);
 
 exports.saveSignature = (user_id, signature) => {
-    const q =
-        "INSERT INTO signatures ( user_id, signature) VALUES ($1, $2) RETURNING *;";
-    return db.query(q, [user_id, signature || null]);
+  console.log("sig", signature);
+  const q =
+    "INSERT INTO signatures ( user_id, signature) VALUES ($1, $2) RETURNING *;";
+  return db.query(q, [user_id, signature || null]);
 };
 
 exports.getSignatureById = id => {
-    const q = "SELECT signature FROM signatures WHERE id = ($1)";
-    return db.query(q, [id]);
+  const q = "SELECT signature FROM signatures WHERE id = ($1)";
+  return db.query(q, [id]);
 };
 
 exports.lookForNames = lookForNames => {
-    return db.query(
-        `SELECT users.firstname, users.lastname, user_profiles.age, user_profiles.city, user_profiles.homepage
+  return db.query(
+    `SELECT users.firstname, users.lastname, user_profiles.age, user_profiles.city, user_profiles.homepage
          FROM users
          JOIN user_profiles
          ON users.id = user_profiles.user_id`
-    );
+  );
 };
 exports.saveUser = (firstname, lastname, email, hashedpassword) => {
-    const q =
-        "INSERT INTO users (firstname, lastname, email, hashedpassword) VALUES ($1, $2, $3, $4) RETURNING *;";
-    return db.query(q, [
-        firstname || null,
-        lastname || null,
-        email || null,
-        hashedpassword || null
-    ]);
+  const q =
+    "INSERT INTO users (firstname, lastname, email, hashedpassword) VALUES ($1, $2, $3, $4) RETURNING *;";
+  return db.query(q, [
+    firstname || null,
+    lastname || null,
+    email || null,
+    hashedpassword || null
+  ]);
 };
 exports.getUsers = function() {
-    return db.query("SELECT * FROM users");
+  return db.query("SELECT * FROM users");
 };
 exports.saveProfile = (user_id, city, age, homepage) => {
-    const q = `
+  const q = `
          INSERT INTO user_profiles (user_id, city, age, homepage)
          VALUES ($1, $2, $3, $4) RETURNING *;`;
-    return db.query(q, [user_id, city, age, homepage]);
+  return db.query(q, [user_id, city, age, homepage]);
 };
 
 exports.lookForCity = city => {
-    const q = `
+  const q = `
          SELECT users.firstname, users.lastname, user_profiles.age, user_profiles.city, user_profiles.homepage
          FROM users JOIN user_profiles
          ON users.id = user_profiles.user_id
          WHERE city = ($1)`;
-    return db.query(q, [city]);
+  return db.query(q, [city]);
 };
 exports.editProfile = user_id => {
-    const q = `
+  const q = `
         SELECT users.firstname, users.lastname, users.email, user_profiles.age, user_profiles.city, user_profiles.homepage
         FROM users
         JOIN user_profiles
         ON users.id = user_profiles.user_id
         WHERE users.id = ($1);
         `;
-    return db.query(q, [user_id]);
+  return db.query(q, [user_id]);
 };
 
 exports.updateUserTableWithoutPassword = (id, firstname, lastname, email) => {
-    const q = `
+  const q = `
      UPDATE users
      SET firstname = $2, lastname = $3, email = $4
      WHERE id = $1
     `;
-    return db.query(q, [id, firstname, lastname, email]);
+  return db.query(q, [id, firstname, lastname, email]);
 };
 
 exports.updateUserTable = (id, firstname, lastname, email, hashedpassword) => {
-    const q = `
+  const q = `
     UPDATE users SET firstname = $2, lastname = $3, email = $4, hashedpassword = $5
     WHERE id = $1
     `;
-    return db.query(q, [id, firstname, lastname, email, hashedpassword]);
+  return db.query(q, [id, firstname, lastname, email, hashedpassword]);
 };
 
 exports.updateProfileTable = (age, city, homepage, user_id) => {
-    console.log(age, city, homepage, user_id);
-    const q = `
+  console.log(age, city, homepage, user_id);
+  const q = `
     INSERT INTO user_profiles (age, city, homepage, user_id)
     VALUES ($1, $2, $3, $4)
     ON CONFLICT (user_id)
     DO UPDATE SET age = $1, city = $2, homepage = $3
     `;
-    return db.query(q, [age, city, homepage, user_id]);
+  return db.query(q, [age, city, homepage, user_id]);
 };
 
 exports.deleteSignature = user_id => {
-    const q = `
+  const q = `
     DELETE FROM signatures
     WHERE user_id = $1
     `;
-    return db.query(q, [user_id]);
+  return db.query(q, [user_id]);
 };

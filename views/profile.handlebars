@@ -1,16 +1,27 @@
-<h1>PLEASE SUPPLY US WITH A BIT MORE INFO ON YOU</h1>
-<div class="profdiv1">
-    <img id="image5"src="image5.png" alt="">
-</div>
+<div class="container">
+  <div class="jumbotron">
+    <h1 class="mb-3">PLEASE SUPPLY US WITH A BIT MORE INFO ON YOU</h1>
+    <div class=" text-center">
+        <img  class="col-md-8 mb-3 mt-3"id="image5"src="image5.png" alt="">
+    </div>
+    <div class="container">
+      <div class=" d-flex justify-content-around">
+          <form method="post">
+              <input class="input" type="text" name="age" placeholder="age">
+              <input class="input" type="text" name="city" placeholder="city">
+              <input  class="input" type="text" name="homepage" placeholder="homepage">
+              <button  id="cbutton"class="button" type="submit" name="button">CONTINUE</button>
+              <input name="_csrf" value="{{csrfToken}}" type="hidden">
 
-<div class="profdiv">
-    <form method="post">
-        <input class="input" type="text" name="age" placeholder="age">
-        <input class="input" type="text" name="city" placeholder="city">
-        <input  class="input" type="text" name="homepage" placeholder="homepage">
-        <button  id="cbutton"class="button" type="submit" name="button">CONTINUE</button>
-        <input name="_csrf" value="{{csrfToken}}" type="hidden">
+          </form>
 
-    </form>
+      </div>
+
+    </div>
+
+
+
+
+  </div>
 
 </div>

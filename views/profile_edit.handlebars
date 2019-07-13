@@ -1,26 +1,33 @@
-<div class="">
-    <h1>PLEASE EDIT YOUR PROFILE HERE</h1>
+<div class="container">
+  <div class="">
+      <h1>PLEASE VERIFY YOUR PROFILE HERE</h1>
 
-</div>
-<div class="editimages">
-    <img src="image6.png" alt="">
-    <img src="image7.png" alt="">
+  </div>
+  <div class="">
+    <div class="jumbotron">
+        <img class="col-md-4" src="image6.png" alt="">
+        <img class="col-md-4" src="image7.png" alt="">
 
 
-</div>
+    </div>
 
-<div class="Editdiv">
-  <form method="post">
-    <input class="input"type="text" name="firstname"placeholder="firstname"value="{{firstname}}">
-    <input class="input"type="text" name="lastname" placeholder="lastname"value="{{lastname}}">
-    <input class="input"type="text" name="email" placeholder="email"value="{{email}}">
-    <input class="input"type="text" name="password"placeholder="password"value="{{password}}">
-    <input class="input"type="text" name="age"placeholder="age"value="{{age}}">
-    <input class="input"type="text" name="city" placeholder="city"value="{{city}}">
-    <input class="input"type="text" name="homepage" placeholder="homepage"value="{{homepage}}">
-    <button id="updatebutton"class="button"type="submit" name="button">UPDATE</button>
-     <input name="_csrf" value="{{csrfToken}}" type="hidden"> <!-- security feature -->
-   </form>
+    <div class=" row">
+      <form method="post">
+        <input class="input"type="text" name="firstname"placeholder="firstname"value="{{firstname}}">
+        <input class="input"type="text" name="lastname" placeholder="lastname"value="{{lastname}}">
+        <input class="input"type="text" name="email" placeholder="email"value="{{email}}">
+        <input class="input"type="text" name="password"placeholder="password"value="{{password}}">
+        <input class="input"type="text" name="age"placeholder="age"value="{{age}}">
+        <input class="input"type="text" name="city" placeholder="city"value="{{city}}">
+        <input class="input"type="text" name="homepage" placeholder="homepage"value="{{homepage}}">
+        <button id="updatebutton"class="button"type="submit" name="button">UPDATE</button>
+         <input name="_csrf" value="{{csrfToken}}" type="hidden"> <!-- security feature -->
+       </form>
+
+
+    </div>
+
+  </div>
 
 
 </div>

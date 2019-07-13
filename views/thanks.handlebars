@@ -1,16 +1,19 @@
-<h1>THANX, YOU HAVE JUST SAVED A LIFE!</h1>
-<div class="thanksdiv1">
-  <img id="thanksimage"src="image3.png">
-</div>
+<div class="container">
+  <h1 class="mb-3">THANX, YOU HAVE JUST SAVED A LIFE!</h1>
+  <div class="thanksdiv1 col-md-12">
+    <img class="col-md-8" id="thanksimage"src="image3.png">
+  </div>
 
-<div class="sigdiv">
-    <img src="{{ signature }}" alt="signature" id="signature">
-     <input name="_csrf" value="{{csrfToken}}" type="hidden"> <!-- security feature -->
-</div>
+  <div class="sigdiv">
+      <img class="col-md-7 mt-2 mb-2"src="{{ signature }}" alt="signature" id="signature">
+       <input name="_csrf" value="{{csrfToken}}" type="hidden"> <!-- security feature -->
+  </div>
 
-<div class="thanksdiv3">
-    <a href="/listOfPeople"><p id="thanks-text">CLICK HERE TO SEE THOSE THAT HAVE COMMITED TO THE REVOLUTION!</p></a>
-    <a href="/logout"><button type="submit" class="button">Logout</button></a>
+  <div class="text-center">
+      <a class="mb-2"href="/listOfPeople"><p id="thanks-text">View Signatures</p></a>
+      <a href="/logout"><button type="submit" class="button">Logout</button></a>
 
+
+  </div>
 
 </div>

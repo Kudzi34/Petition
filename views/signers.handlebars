@@ -1,12 +1,16 @@
-<!DOCTYPE HTML>
-<img id="image9"src="/image9.png">
+<div class="container">
 
-<div class="boxOfPeople">
-    <h2 id="signersh2"> HERE ARE {{count}} PEOPLE WHO HAVE SIGNED THE PETITION: </h2>
 
-<ul class="listOfPeople">
-    {{#each signers}}
-    {{#if homepage}}
+  <div class="text-center">
+
+    <img class="col-md-8 mb-2"id="image9"src="/image9.png">
+
+    <div class="boxOfPeople">
+      <h2 id="signersh2"> HERE ARE {{count}} PEOPLE WHO HAVE SIGNED THE PETITION: </h2>
+
+      <ul class="listOfPeople">
+        {{#each signers}}
+        {{#if homepage}}
 
         <li> <a href="{{homepage}}">{{firstname}} {{lastname}}<a/>,{{age}},<a href="/signers/{{city}}">{{city}}</a></li>
         {{else}}
@@ -14,11 +18,9 @@
         <li>{{firstname}} {{lastname}},  {{age}},  <a href="/signers/{{city}}">{{city}}</a></li>
 
         {{/if}}
-    {{/each}}
+        {{/each}}
 
-</ul>
-</div>
-<div class="">
-
-
+      </ul>
+    </div>
+  </div>
 </div>
