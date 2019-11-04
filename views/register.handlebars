@@ -1,68 +1,92 @@
 <div class="container">
-  <div class="container-fluid">
-    <h1 id="Regheader">PLEASE REGISTER HERE AND BE PART OF THE REVOLUTION TO REDUCE FOOD WASTAGE!</h1>
-  </div>
+
+
+  <header class="container ">
+    <h1 id="Regheader">FIGHT WORLD HUNGER!</h1>
+  </header>
+
+
   <div class=" jumbotron ">
-    <div class="row ">
-      <div class="d-flex justify-content-between ">
-        <div class="col-md-5  border border-rounded">
-            <h3>WORLD HUNGER FACTS</h3>
-                <ol>
-                    <li>1 out 10 people around the world experience chronic hunger.</li>
-                    <li>98% of the world's undernourished people live in developing countries.</li>
-                    <li>767 people live under $1.90 a day.</li>
-                    <li>3 million of all deaths in children under age 5 are attributed to undernutrion.</li>
-                    <li>1 of 6 infants are born with a low birth weight.</li>
-                </ol>
+    <div class="problem">
+      <h2>Why is world hunger a problem?</h2>
+       <h5>Millions of people around the world are simply too poor to be able to buy food. They also lack the resources to grow their own food, such as arable land and the means to harvest, process, and store food.</h5>
+       <a href="#register-form"><button id= "take-action-button"type="button">Sign Up!</button></a>
 
-        </div>
-        <div class=" col-md-5 border border-rounded ">
-            <h3>FOOD WASTAGE FACTS</h3>
-            <ol>
-                <li>3 billion tonnes of food are wasted each year.</li>
-                <li>$1 trillion of annual loss is due to food wastage.</li>
-                <li>$3.3 billion tonnes of carbon dioxide is created by wasted food.</li>
-                <li>1/4 of all wasted food could feed 795 million of all undernourished people.</li>
-            </ol>
+    </div>
 
-        </div>
+ </div>
 
-      </div>
+ <div class="container-fluid">
+  <div class="row">
+    <div class="col-sm text-white">
+      <h2>EDUCATION</h2>
+      <img class="landing-pg-images" id='children-classroom' src="children-classroom.jpg" alt="children in classroom">
+      <p class="description">The effects of hunger on education are startling. Chronic hunger can prevent students from making the most of a formal education, no matter how hard they try to ignore its effects. The sad truth is that hunger can have physical and psychological effects on young people that make learning substantially difficult.</p>
+    </div>
+    <div class="col-sm text-white">
+      <h2>JOBS</h2>
+      <img class="landing-pg-images" id="jobless-man" src="jobless.jpg" alt="homeless man">
+      <p class="description">Among the factors that often contribute to poverty are unemployment and underemployment. Put simply, many people live in poverty because they are unable to find a job </p>
+    </div>
+    <div class="col-sm text-white">
+      <h2>LAND</h2>
+      <img class="landing-pg-images " id= 'plant-image'src="plant.jpg" alt="plant image">
+      <p class="description">Land is fundamental to the
+lives of poor rural people. It is
+a source of food, shelter,
+income and social identity.
+Secure access to land
+reduces vulnerability to
+hunger and poverty. But for
+many of the world’s poor
+rural people in developing
+countries, access is becoming
+more tenuous than ever.</p>
+    </div>
+
+  </div>
+</div>
+<div class="container">
+ <div class="row">
+   <div class="col-sm text-white">
+     <h2>FOOD</h2>
+     <img class ="landing-pg-images"id='african-children-image' src="african-children.jpg" alt="African children image">
+     <p class="description">The world produces enough food for everyone to live a healthy, productive life. The challenge is not a lack of food, it’s making food consistently available to everyone who needs it.</p>
+   </div>
+   <div class="col-sm text-white">
+     <h2>INVESTMENT</h2>
+     <img id="coins" class="landing-pg-images"src="coins.jpg" alt="coins">
+     <p class="description">Foreign direct investment is a key ingredient of successful economic growth and development in developing countries</p>
+
+   </div>
+
+ </div>
+</div>
+
 
 
     </div>
 
 
-
-  </div>
-  <div class="row">
-
-    <img class="col-md-12" id="regimage"src="image2.png" alt="bowlimage">
-
-  </div>
-
-<div class="container-fluid">
-  <div class="register">
-
-
-    <form class="regform" method="post">
-       <input class="input"type="text" name="firstname" placeholder="firstname">
-       <input class="input"type="text" name="lastname" placeholder="lastname">
-       <input  class="input"type="text" name="email" placeholder="email">
-       <input class="input"type="text" name="password" placeholder="password">
-       <button class="button ml-3"type="submit">REGISTER</button>
-       <input name="_csrf" value="{{csrfToken}}" type="hidden">
-  </form>
-  <div class="row">
-    {{#if error}} <p>There was an error</p>{{/if}}
-
   </div>
 
 
+  <div class="container">
+    <div class="register">
+      <h2>SIGN UP!</h2>
+      <form class="regform" id='register-form' method="post">
+         <input class="input"type="text" name="firstname" placeholder="Firstname" value="" required>
+         <input class="input"type="text" name="lastname" placeholder="Lastname" value=""required>
+         <input  class="input"type="text" name="email" placeholder="Email" value="" required>
+         <input class="input"type="text" name="password" placeholder="Password" value="" required>
+         <button class="button ml-3"type="submit">REGISTER</button>
+         <input name="_csrf" value="{{csrfToken}}" type="hidden">
+       </form>
+      <div class="row">
+        {{#if error}} <p>There was an error</p>{{/if}}
 
-  </div>
+      </div>
 
-</div>
 
 
 </div>

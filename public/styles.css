@@ -1,16 +1,100 @@
-* {
-  background-color: grey;
+body {
+  background-image: url("./background.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  opacity: 0.5px;
+}
+/* landing page */
+header {
+  margin-top: 50px;
+  height: 200px;
+}
+#Regheader {
+  font-size: 80px;
+}
+.problem {
+  text-align: center;
 }
 
+#take-action-button {
+  margin-top: 15px;
+  box-shadow: black 2px 1px 1px;
+  font-size: 23px;
+  color: white;
+  width: 190px;
+  height: 70px;
+  background-color: #17d43f;
+  border-radius: 30px;
+  text-shadow: black 1px 1px;
+}
+#take-action-button:hover {
+  background-color: #13a833;
+}
+.description {
+  font-size: 17px;
+  text-align: start;
+}
+.hovered-discrip {
+  font-size: 20px;
+  color: #68f606;
+  background-color: #475775;
+}
+
+.landing-pg-images {
+  height: 250px;
+  width: 300px;
+}
+
+.register {
+  height: 100%;
+  background-image: url(" ./form-background.jpg");
+  color: white;
+}
 .input {
+  background-color: white;
+  display: block;
   background: #c0c0c0;
-  border-radius: 15px;
+  border-bottom: 80px;
   margin-bottom: 20px;
   height: 40px;
   margin-left: 20px;
 }
 input:focus {
   outline: none;
+}
+/* landing pageend */
+
+/* profile edit page */
+
+#edit-pg-jumbo {
+  background-color: #307798;
+}
+.edit-main-div {
+}
+.edit-profile-imgs {
+  width: 250px;
+  height: 250px;
+}
+.form2 {
+  align-content: center;
+  background-color: #5a7591;
+}
+#updatebutton {
+  background-color: #3482a7;
+  width: 100px;
+}
+
+#jumbo-3 {
+  background-color: #307798;
+}
+#cbutton {
+  background-color: #3482a7;
+  margin-left: 28px;
+  width: 150px;
+}
+#cbutton:hover {
+  background-color: #21429c;
+  width: 160px;
 }
 .thanksdiv1 {
   display: flex;
@@ -23,6 +107,8 @@ input:focus {
 #signature {
   width: 400px;
   border: solid 4px;
+  background-color: #359acc;
+  color: #b3d8ff;
 }
 .sigdiv {
   display: flex;
@@ -56,7 +142,8 @@ input:focus {
   display: inline-block;
 }
 #image5 {
-  height: 400px;
+  width: 350px;
+  height: 300px;
   widthmargin-bottom: 20px;
 }
 
@@ -83,11 +170,10 @@ h1 {
   text-shadow: 4px 4px black;
   texposition: relative;
   text-align: center;
-  font-family: cursive;
   font-weight: bold;
-  font-size: 30px;
   color: white;
 }
+
 #canvas {
   height: 250px;
   width: 80%;
@@ -102,10 +188,6 @@ h1 {
   width: 85px;
   box-shadow: black 2px 2px;
 }
-#cbutton {
-  margin-left: 15px;
-  width: 150px;
-}
 
 #regimage {
   margin-top: 10px;
@@ -117,6 +199,7 @@ h1 {
 
   position: relative;
 }
+
 #image9 {
   height: 400px;
 }
@@ -129,16 +212,11 @@ h1 {
   left: 10px;
   bottom: 55px;
 }
-#updatebutton {
-  position: relative;
-  left: 50px;
-}
+
 #signersh2 {
-  font-size: 20px;
-  font-family: cursive;
+  font-size: 25px;
   font-weight: bold;
   color: white;
-  text-shadow: 4px 4px black;
 }
 .listOfPeople {
   list-style: none;
@@ -159,9 +237,9 @@ h1 {
   position: relative;
 }
 #thanks-text {
-  font-size: 20px;
+  font-size: 25px;
   font-weight: bold;
-  font-family: cursive;
+  /* font-family: cursive; */
   color: white;
   text-shadow: 4px 4px black;
   text-decoration: none;
@@ -182,17 +260,8 @@ h1 {
   display: flex;
   justify-content: center;
 }
-
-.hungerfactsdiv {
-  margin-left: 100px;
-  text-align: justify;
-  display: inline-block;
-  border: 3px solid white;
-  border-radius: 20px;
+.signers-maindiv {
+  background-color: #b6c5d4;
 }
-.foodwaistagediv {
-  margin-left: 20px;
-  display: inline-block;
-  border: 3px solid white;
-  border-radius: 20px;
+.canvas-maindiv {
 }
